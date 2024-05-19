@@ -86,22 +86,22 @@ class AdlaDetector(DetectionApi):
 
         detections = np.zeros((20, 6), np.float32)
 
-        if count[0] > 0:
-            logger.debug(f"Number of object detected {count[0]}")
-
-        for i in range(count[0]):
-            if box['score'][0][i] < 0.4 or i == 20:
-                break
-            detections[i] = [
-                box['objectClass'][0][i],
-                float(box['score'][0][i]),
-                box['ymin'][0][i],
-                box['xmin'][0][i],
-                box['ymax'][0][i],
-                box['xmax'][0][i],
-            ]
-            #logger.debug(detections[i])
-
+        # if count[0] > 0:
+        #     logger.debug(f"Number of object detected {count[0]}")
+        #
+        # for i in range(count[0]):
+        #     if box['score'][0][i] < 0.4 or i == 20:
+        #         break
+        #     detections[i] = [
+        #         box['objectClass'][0][i],
+        #         float(box['score'][0][i]),
+        #         box['ymin'][0][i],
+        #         box['xmin'][0][i],
+        #         box['ymax'][0][i],
+        #         box['xmax'][0][i],
+        #     ]
+        #     #logger.debug(detections[i])
+        #
         detect_stop_time = time.time()
         detect_duration = detect_stop_time - detect_start_time
         logger.debug(f"detect raw finished after {detect_duration} seconds")
